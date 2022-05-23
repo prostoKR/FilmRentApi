@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import authHeader from "../services/auth-header";
 
 const useFetch =(url) =>{
     const [data, setData] = useState(null);
@@ -9,7 +10,7 @@ const useFetch =(url) =>{
         const abortCont = new AbortController();
 
         // setTimeout(() => {
-            fetch(url, {signal: abortCont.signal})
+            fetch(url,  { headers: authHeader() }, {signal: abortCont.signal})
                 .then(res => {
                       if(!res.ok){
                         throw Error('could not fetch the data for that resource');

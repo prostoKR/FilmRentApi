@@ -12,6 +12,8 @@ const Navbar = () => {
                 <Link to="/create" >New Film</Link>
                 <Link to="/producerCreate" >New Producer</Link>
                 <Link to="/producers" >Producer List</Link>
+                <Link to="/signup" >Register</Link>
+                <Link to="/signin" >Login</Link>
             </div>
         </div>
     );
