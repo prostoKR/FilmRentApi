@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useFetch from "./useFetch";
+import authHeader from "../services/auth-header";
 
 
 
@@ -14,10 +15,10 @@ const Edit = ({ films }) => {
     const [title, setTitle] = useState('');
     const [storyline, setStoryline] = useState('');
     const [producer, setProducer] = useState('');
-    const{data: producers, isPending2, error} = useFetch('http://localhost:8000/producers');
+    const {data: producers, isPending2, error} = useFetch('http://localhost:8000/producers');
 
     useEffect(() => {
-        fetch('http://localhost:8000/films/' + id)
+        fetch('http://localhost:8000/films/' + id, { headers: authHeader() })
             .then(response => response.json())
             .then(data => {
                 setTitle(data.title);
@@ -34,7 +35,7 @@ const Edit = ({ films }) => {
 
         const requestOption = {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            headers: authHeader(),// headers: authHeader() { 'Content-Type': 'application/json' },
             body: JSON.stringify(updFilm)
         };
 

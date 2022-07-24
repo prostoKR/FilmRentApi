@@ -9,7 +9,6 @@ import ProducerCreate from './components/ProducerCreate';
 import ProducerDetails from './components/ProducerDetails';
 import ProducerAllList from "./components/ProducerAllList";
 import ProducerEdit from './components/ProducerEdit';
-import "bootstrap/dist/css/bootstrap.min.css";
 import {useForm} from 'react-hook-form';
 // import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -21,42 +20,44 @@ import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
+import cosmic from "./images/cosmic.png";
+// import { ImageBackground } from 'react-native';
+
+
 
 
 
 function App() {
 
-  
-
 
   return (
-
-    <div className="App">
+    
+    <div className="App ">
+      {/* <div className="overlay" style={{backroundimage:'url(${cosmic})'}}/>  */}
       <Navbar />
+      
      
      
      
-     
-     
-      <div className="content">
+      <div className="content ">
 
         <Routes>
-
-
-
-
-
-          <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+         
           <Route path="/producerCreate" element={<ProducerCreate />}></Route>
           <Route path="/producerEdit/:id" element={<ProducerEdit />}></Route>
           <Route path="/producers" element={<ProducerAllList />}></Route>
           <Route path="/producers/:id" element={<ProducerDetails />}></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/films/:id" element={<FilmDetails />}></Route>
+          {/* <Route path="/films" element={<FilmList />}></Route> */}
           <Route path="/edit/:id" element={<Edit />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/signup" element={<Register />}></Route>
+
           <Route path="/signin" element={<Login />}></Route>
+
        </Routes>
     </div>
     </div >

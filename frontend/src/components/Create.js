@@ -2,6 +2,7 @@ import { useState } from "react";
 //import {useHistory} from 'react-router-dom';
 import {useNavigate} from "react-router-dom"
 import useFetch from './useFetch';
+import authHeader from "../services/auth-header";
 
 
 const Create = () => {
@@ -23,7 +24,7 @@ const Create = () => {
 
         fetch('http://localhost:8000/films',{
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
+            headers: authHeader(),//{"Content-Type": "application/json"},
             body: JSON.stringify(film)
         }).then(() => {
             console.log('new film added');

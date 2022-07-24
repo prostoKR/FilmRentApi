@@ -3,6 +3,7 @@ import useFetch from "./useFetch";
 //import {useHistory} from 'react-router-dom';
 import { Link } from "react-router-dom";
 import {useNavigate} from 'react-router-dom';
+import authHeader from "../services/auth-header";
 
 
 
@@ -18,7 +19,8 @@ const FilmDetails = () => {
 
     const handleClick = () => {
         fetch('http://localhost:8000/films/'+ film.id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: authHeader()//{"Content-Type": "application/json"},
         }).then(() => {
                 history('/');
         });
@@ -35,13 +37,14 @@ const FilmDetails = () => {
 
     return (
         <div className="film-details">
+            <h1>Film information</h1>
             {isPending && <div>Loading...</div>}
             {error && <div>{error}</div>}
             {film && (
                 <article>
-                    <h2>{film.title}</h2>
-                    <p>Film by {film.producer.name}</p>
-                    <div>{film.storyline}</div>
+                    <h2>Film name: {film.title}</h2>
+                    <p>Film by: {film.producer.name}</p>
+                    <div>Film description: {film.storyline}</div>
                     {/* <button onClick={handleClickEdit}>edit</button> */}
                     {/* <button><Link to="/edit">edit</Link></button>  */}
                     <Link to={'/edit/'+film.id}><button>edit</button></Link>

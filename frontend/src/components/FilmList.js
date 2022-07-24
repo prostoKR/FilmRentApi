@@ -22,7 +22,7 @@ const FilmList = ({ films, title }) => {
 
 
     return (
-        <div className="film-list">
+        <div className="film-list bg-light">
             <h2>{title}</h2>
             {films.map((film) => (
                 <div className="film-preview" key={film.id}>
@@ -30,7 +30,7 @@ const FilmList = ({ films, title }) => {
 
                         <h2>{film.title}</h2>
                         <p>Wryte by:  {film.producer.name}</p>
-                        <button onClick={() => handleClick(films.id)}>delete film</button>
+                        {/* <button onClick={() => handleClick(films.id)}>delete film</button> */}
                         
                     </Link>
                     

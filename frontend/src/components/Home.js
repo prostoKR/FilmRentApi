@@ -36,7 +36,7 @@ const Home = () => {
 
 
     return (
-        <div className="home">
+        <div className="home bg-light">
             {error && <div> { error} </div>}
             {isPending && <div>Loading...</div>}
             {films && <FilmList films={films} title="All Films" />}
